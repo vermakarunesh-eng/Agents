@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Expert Sentiment Analyst</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17202a;
+      --muted: #5d6875;
+      --line: #d8dee6;
+      --panel: #ffffff;
+      --soft: #f3f6f8;
+      --good: #16784f;
+      --bad: #b3263a;
+      --warn: #a46100;
+      --blue: #2364aa;
+      --violet: #6650a4;
+      --shadow: 0 12px 28px rgba(28, 43, 58, .12);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #edf1f5;
+      color: var(--ink);
+    }
+
+    main {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: minmax(320px, 460px) 1fr;
+    }
+
+    .input-pane {
+      background: #fbfcfd;
+      border-right: 1px solid var(--line);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-height: 100vh;
+    }
+
+    .brand {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    h1 {
+      font-size: 24px;
+      line-height: 1.08;
+      margin: 0 0 6px;
+      letter-spacing: 0;
+    }
+
+    .subhead {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+      max-width: 32rem;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border: 1px solid #bfd0df;
+      color: #224a6b;
+      background: #eef5fa;
+      height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--good);
+    }
+
+    label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #334252;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 320px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 8px;
+      padding: 14px;
+      color: var(--ink);
+      line-height: 1.45;
+      font: 14px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      outline: none;
+    }
+
+    textarea:focus, select:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(35, 100, 170, .14);
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    select, button {
+      height: 40px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+
+    select { padding: 0 10px; }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 44px 44px;
+      gap: 10px;
+      align-items: center;
+    }
+
+    button {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      font-weight: 700;
+    }
+
+    .primary {
+      background: var(--ink);
+      color: #fff;
+      border-color: var(--ink);
+    }
+
+    .icon-button {
+      font-size: 18px;
+      color: #293747;
+    }
+
+    .examples {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .example {
+      height: 32px;
+      padding: 0 10px;
+      font-size: 12px;
+      font-weight: 650;
+      color: #314457;
+      background: #fff;
+    }
+
+    .output-pane {
+      padding: 22px;
+      overflow: auto;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(150px, 1fr));
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .metric, .analysis-card, .table-wrap {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .metric {
+      padding: 15px;
+      min-height: 104px;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin-bottom: 10px;
+    }
+
+    .metric strong {
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .metric small {
+      display: block;
+      color: var(--muted);
+      margin-top: 8px;
+      line-height: 1.35;
+    }
+
+    .analysis-card {
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .analysis-card h2 {
+      font-size: 16px;
+      margin: 0 0 12px;
+      letter-spacing: 0;
+    }
+
+    .bars {
+      display: grid;
+      gap: 10px;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 95px 1fr 54px;
+      gap: 10px;
+      align-items: center;
+      font-size: 13px;
+      color: #344456;
+    }
+
+    .track {
+      height: 10px;
+      background: var(--soft);
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid #e2e7ec;
+    }
+
+    .fill {
+      height: 100%;
+      width: 0%;
+      background: var(--blue);
+      transition: width .25s ease;
+    }
+
+    .positive { color: var(--good); }
+    .negative { color: var(--bad); }
+    .neutral { color: var(--warn); }
+    .fill.positive { background: var(--good); }
+    .fill.negative { background: var(--bad); }
+    .fill.neutral { background: var(--warn); }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      border: 1px solid #d4dde6;
+      background: #f8fafb;
+      color: #304153;
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 12px;
+      line-height: 1.2;
+    }
+
+    .grid-two {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
+    }
+
+    .rationale {
+      margin: 0;
+      color: #334252;
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    .table-wrap {
+      overflow: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+      font-size: 13px;
+    }
+
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: #35475a;
+      background: #f7f9fb;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .empty {
+      height: calc(100vh - 44px);
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .empty div {
+      max-width: 420px;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 980px) {
+      main { grid-template-columns: 1fr; }
+      .input-pane { min-height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      textarea { min-height: 240px; }
+      .dashboard { grid-template-columns: repeat(2, minmax(130px, 1fr)); }
+      .grid-two { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .input-pane, .output-pane { padding: 16px; }
+      .brand { flex-direction: column; }
+      .controls, .actions { grid-template-columns: 1fr; }
+      .icon-button { height: 38px; }
+      .dashboard { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: 82px 1fr 48px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="input-pane" aria-label="Sentiment input">
+      <div class="brand">
+        <div>
+          <h1>Expert Sentiment Analyst</h1>
+          <p class="subhead">High-resolution scoring for news, market commentary, posts, replies, and mixed social streams.</p>
+        </div>
+        <span class="status-pill"><span class="dot"></span> Offline model</span>
+      </div>
+
+      <div class="field">
+        <label for="sourceText">Content</label>
+        <textarea id="sourceText" spellcheck="true" placeholder="Paste one item or multiple items separated by blank lines."></textarea>
+      </div>
+
+      <div class="controls">
+        <div class="field">
+          <label for="domain">Domain</label>
+          <select id="domain">
+            <option value="news">News and headlines</option>
+            <option value="social">Social media</option>
+            <option value="markets">Markets and business</option>
+            <option value="general">General text</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="mode">Analysis mode</label>
+          <select id="mode">
+            <option value="balanced">Balanced</option>
+            <option value="strict">Strict confidence</option>
+            <option value="sensitive">Emotion sensitive</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="primary" id="analyzeBtn" type="button">Analyze Sentiment</button>
+        <button class="icon-button" id="copyBtn" type="button" title="Copy report" aria-label="Copy report">⧉</button>
+        <button class="icon-button" id="clearBtn" type="button" title="Clear" aria-label="Clear">×</button>
+      </div>
+
+      <div class="examples" aria-label="Examples">
+        <button class="example" data-example="news" type="button">News sample</button>
+        <button class="example" data-example="social" type="button">Social sample</button>
+        <button class="example" data-example="markets" type="button">Market sample</button>
+      </div>
+    </section>
+
+    <section class="output-pane" aria-live="polite">
+      <div id="results" class="empty">
+        <div>Paste text and run analysis to see polarity, confidence, emotional intensity, credibility flags, and the terms that drove each score.</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const lexicon = {
+      positive: {
+        "gain": 2.1, "gains": 2.1, "growth": 2.2, "strong": 1.8, "beat": 1.9, "beats": 1.9, "surge": 2.5,
+        "surged": 2.5, "improve": 1.8, "improved": 1.8, "improving": 1.7, "record": 1.6, "profit": 2.1,
+        "profitable": 2.2, "optimistic": 2.1, "support": 1.5, "supports": 1.5, "approval": 1.7, "approved": 1.8,
+        "resilient": 1.9, "rebound": 2.1, "recovered": 2.0, "recovery": 2.0, "win": 2.0, "wins": 2.0,
+        "successful": 2.2, "success": 2.0, "promising": 1.9, "confident": 1.8, "upgrade": 2.0, "upgraded": 2.0,
+        "bullish": 2.6, "outperform": 2.3, "relief": 1.6, "breakthrough": 2.5, "safe": 1.4, "secure": 1.6,
+        "love": 2.7, "great": 2.3, "excellent": 2.8, "amazing": 2.6, "happy": 2.1, "best": 2.5
+      },
+      negative: {
+        "loss": -2.3, "losses": -2.3, "weak": -1.8, "miss": -1.9, "misses": -1.9, "fall": -1.8, "falls": -1.8,
+        "fell": -2.1, "drop": -2.0, "dropped": -2.1, "decline": -2.0, "declined": -2.0, "risk": -1.8,
+        "risks": -1.8, "lawsuit": -2.3, "fraud": -3.0, "probe": -1.7, "investigation": -1.9, "crisis": -2.8,
+        "concern": -1.6, "concerns": -1.6, "fear": -2.2, "fears": -2.2, "angry": -2.3, "anger": -2.2,
+        "backlash": -2.3, "boycott": -2.3, "downgrade": -2.2, "downgraded": -2.2, "bearish": -2.6,
+        "underperform": -2.3, "cut": -1.7, "cuts": -1.7, "layoff": -2.2, "layoffs": -2.4, "bankrupt": -3.0,
+        "bankruptcy": -3.0, "unsafe": -2.4, "threat": -2.4, "hate": -2.8, "terrible": -2.7, "worst": -2.9,
+        "awful": -2.6, "disappointing": -2.1, "disappointed": -2.1, "fail": -2.4, "failed": -2.4, "failure": -2.5
+      },
+      emotion: {
+        anger: ["angry", "rage", "furious", "hate", "outrage", "backlash", "slam", "slammed"],
+        fear: ["fear", "worried", "worry", "risk", "threat", "crisis", "unsafe", "panic"],
+        joy: ["love", "happy", "great", "excellent", "amazing", "win", "success", "relief"],
+        trust: ["secure", "safe", "approved", "support", "confident", "resilient", "credible"]
+      }
+    };
+
+    const negators = new Set(["not", "never", "no", "without", "hardly", "barely", "rarely", "isnt", "isn't", "wasnt", "wasn't", "dont", "don't", "doesnt", "doesn't"]);
+    const intensifiers = { "very": 1.25, "extremely": 1.45, "highly": 1.3, "deeply": 1.3, "massively": 1.45, "slightly": .72, "somewhat": .78, "partly": .72 };
+    const uncertainty = new Set(["may", "might", "could", "reportedly", "allegedly", "rumor", "rumour", "unconfirmed", "possible", "appears", "seems"]);
+    const socialMarkers = new Set(["lol", "lmao", "smh", "imo", "imho", "wtf", "wow", "🔥", "🚀", "😭"]);
+    const riskTerms = ["lawsuit", "fraud", "probe", "investigation", "bankruptcy", "layoff", "layoffs", "boycott", "unsafe", "threat", "crisis", "rumor", "unconfirmed"];
+
+    const samples = {
+      news: "The company reported stronger than expected quarterly growth, beating analyst estimates and raising guidance.\n\nOfficials warned that the investigation remains ongoing after safety concerns triggered a product recall.",
+      social: "I wanted this launch to be good, but the app keeps crashing and support has been awful.\n\nHonestly impressed. The new update feels fast, clean, and way better than last month.",
+      markets: "Shares surged after management announced record profit and resilient demand.\n\nTraders remain cautious as debt concerns, layoffs, and weak margins weigh on the outlook."
+    };
+
+    const sourceText = document.getElementById("sourceText");
+    const results = document.getElementById("results");
+    const domain = document.getElementById("domain");
+    const mode = document.getElementById("mode");
+    let lastReport = "";
+
+    document.getElementById("analyzeBtn").addEventListener("click", render);
+    document.getElementById("clearBtn").addEventListener("click", () => {
+      sourceText.value = "";
+      results.className = "empty";
+      results.innerHTML = "<div>Paste text and run analysis to see polarity, confidence, emotional intensity, credibility flags, and the terms that drove each score.</div>";
+    });
+    document.getElementById("copyBtn").addEventListener("click", async () => {
+      if (lastReport) await navigator.clipboard.writeText(lastReport);
+    });
+    document.querySelectorAll("[data-example]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        sourceText.value = samples[btn.dataset.example];
+        domain.value = btn.dataset.example === "markets" ? "markets" : btn.dataset.example;
+        render();
+      });
+    });
+
+    function tokenize(text) {
+      return (text.toLowerCase().match(/[a-zA-Z']+|[\u{1F300}-\u{1FAFF}]/gu) || []).map(t => t.replace(/^'+|'+$/g, ""));
+    }
+
+    function splitItems(text) {
+      return text.split(/\n\s*\n|(?<=[.!?])\s+(?=[A-Z0-9"'])/).map(x => x.trim()).filter(Boolean);
+    }
+
+    function analyzeItem(text) {
+      const tokens = tokenize(text);
+      const evidence = [];
+      const emotionHits = { anger: 0, fear: 0, joy: 0, trust: 0 };
+      let raw = 0;
+      let magnitude = 0;
+      let uncertaintyHits = 0;
+      let socialHits = 0;
+      let riskHits = 0;
+
+      tokens.forEach((token, index) => {
+        if (uncertainty.has(token)) uncertaintyHits += 1;
+        if (socialMarkers.has(token)) socialHits += 1;
+        if (riskTerms.includes(token)) riskHits += 1;
+
+        Object.entries(lexicon.emotion).forEach(([name, words]) => {
+          if (words.includes(token)) emotionHits[name] += 1;
+        });
+
+        const base = lexicon.positive[token] || lexicon.negative[token] || 0;
+        if (!base) return;
+
+        const window = tokens.slice(Math.max(0, index - 3), index);
+        const isNegated = window.some(w => negators.has(w));
+        const multiplier = window.reduce((factor, w) => factor * (intensifiers[w] || 1), 1);
+        const adjusted = base * multiplier * (isNegated ? -0.84 : 1);
+        raw += adjusted;
+        magnitude += Math.abs(adjusted);
+        evidence.push({ term: token, score: adjusted, modifier: isNegated ? "negated" : multiplier !== 1 ? "weighted" : "direct" });
+      });
+
+      const domainFactor = { news: .9, social: 1.12, markets: 1.02, general: 1 }[domain.value];
+      const modeFactor = { balanced: 1, strict: .86, sensitive: 1.12 }[mode.value];
+      const normalized = Math.tanh((raw * domainFactor * modeFactor) / 5);
+      const polarityScore = Math.round(normalized * 1000) / 10;
+      const direction = polarityScore > 8 ? "Positive" : polarityScore < -8 ? "Negative" : "Neutral";
+      const evidenceDensity = Math.min(1, evidence.length / Math.max(3, tokens.length / 12));
+      const ambiguityPenalty = Math.min(.32, uncertaintyHits * .055 + (direction === "Neutral" ? .08 : 0));
+      const agreement = magnitude ? Math.abs(raw) / magnitude : 0;
+      const confidence = Math.round(Math.max(7, Math.min(99.7, (42 + evidenceDensity * 35 + agreement * 28 - ambiguityPenalty * 100) * (mode.value === "strict" ? .92 : 1))) * 10) / 10;
+      const intensity = Math.round(Math.min(100, (Math.abs(normalized) * 72 + magnitude * 3.2 + socialHits * 4)) * 10) / 10;
+      const emotionTotal = Object.values(emotionHits).reduce((a, b) => a + b, 0) || 1;
+      const emotions = Object.fromEntries(Object.entries(emotionHits).map(([k, v]) => [k, Math.round((v / emotionTotal) * 100)]));
+
+      return {
+        text, tokens, raw, polarityScore, direction, confidence, intensity, emotions, evidence,
+        uncertaintyHits, riskHits, socialHits
+      };
+    }
+
+    function summarize(items) {
+      const n = Math.max(1, items.length);
+      const avgPolarity = items.reduce((a, b) => a + b.polarityScore, 0) / n;
+      const avgConfidence = items.reduce((a, b) => a + b.confidence, 0) / n;
+      const avgIntensity = items.reduce((a, b) => a + b.intensity, 0) / n;
+      const pos = items.filter(i => i.direction === "Positive").length;
+      const neg = items.filter(i => i.direction === "Negative").length;
+      const neu = items.filter(i => i.direction === "Neutral").length;
+      const netLabel = avgPolarity > 8 ? "Positive" : avgPolarity < -8 ? "Negative" : "Mixed / Neutral";
+      return { avgPolarity, avgConfidence, avgIntensity, pos, neg, neu, netLabel };
+    }
+
+    function pct(value) {
+      return `${Math.round(value * 10) / 10}%`;
+    }
+
+    function escapeHtml(value) {
+      return value.replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
+    }
+
+    function render() {
+      const text = sourceText.value.trim();
+      if (!text) return;
+      const items = splitItems(text).map(analyzeItem);
+      const summary = summarize(items);
+      const allEvidence = items.flatMap(i => i.evidence).sort((a, b) => Math.abs(b.score) - Math.abs(a.score)).slice(0, 18);
+      const riskCount = items.reduce((a, b) => a + b.riskHits, 0);
+      const uncertainCount = items.reduce((a, b) => a + b.uncertaintyHits, 0);
+      const topEmotion = ["anger", "fear", "joy", "trust"].map(name => ({
+        name,
+        value: Math.round(items.reduce((a, b) => a + b.emotions[name], 0) / items.length)
+      })).sort((a, b) => b.value - a.value)[0];
+
+      const reportLines = [
+        `Overall: ${summary.netLabel}`,
+        `Polarity: ${summary.avgPolarity.toFixed(1)} / 100`,
+        `Confidence: ${summary.avgConfidence.toFixed(1)}%`,
+        `Intensity: ${summary.avgIntensity.toFixed(1)}%`,
+        `Items: ${items.length} (${summary.pos} positive, ${summary.neg} negative, ${summary.neu} neutral)`
+      ];
+      lastReport = reportLines.join("\n");
+
+      results.className = "";
+      results.innerHTML = `
+        <div class="dashboard">
+          ${metric("Overall", summary.netLabel, `${items.length} analyzed item${items.length === 1 ? "" : "s"}`)}
+          ${metric("Polarity", `${summary.avgPolarity.toFixed(1)}`, "Range: -100 to +100")}
+          ${metric("Confidence", pct(summary.avgConfidence), "Evidence, agreement, ambiguity")}
+          ${metric("Intensity", pct(summary.avgIntensity), "Emotion and strength")}
+        </div>
+
+        <div class="grid-two">
+          <section class="analysis-card">
+            <h2>Score Distribution</h2>
+            <div class="bars">
+              ${bar("Positive", summary.pos / items.length * 100, "positive")}
+              ${bar("Negative", summary.neg / items.length * 100, "negative")}
+              ${bar("Neutral", summary.neu / items.length * 100, "neutral")}
+              ${bar(`Top emotion: ${topEmotion.name}`, topEmotion.value, "")}
+            </div>
+          </section>
+
+          <section class="analysis-card">
+            <h2>Analyst Rationale</h2>
+            <p class="rationale">${rationale(summary, riskCount, uncertainCount, allEvidence)}</p>
+            <div class="chips">
+              ${riskCount ? `<span class="chip">Risk terms: ${riskCount}</span>` : `<span class="chip">No major risk terms</span>`}
+              ${uncertainCount ? `<span class="chip">Uncertainty: ${uncertainCount}</span>` : `<span class="chip">Low uncertainty language</span>`}
+              <span class="chip">Domain: ${escapeHtml(domain.options[domain.selectedIndex].text)}</span>
+              <span class="chip">Mode: ${escapeHtml(mode.options[mode.selectedIndex].text)}</span>
+            </div>
+          </section>
+        </div>
+
+        <section class="analysis-card">
+          <h2>Evidence Terms</h2>
+          <div class="chips">
+            ${allEvidence.length ? allEvidence.map(e => `<span class="chip">${escapeHtml(e.term)} ${e.score > 0 ? "+" : ""}${e.score.toFixed(1)} · ${e.modifier}</span>`).join("") : `<span class="chip">No strong sentiment terms detected</span>`}
+          </div>
+        </section>
+
+        <section class="table-wrap" aria-label="Item-level sentiment">
+          <table>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Sentiment</th>
+                <th>Polarity</th>
+                <th>Confidence</th>
+                <th>Intensity</th>
+                <th>Flags</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${items.map((item, idx) => `
+                <tr>
+                  <td>${idx + 1}. ${escapeHtml(item.text.slice(0, 240))}${item.text.length > 240 ? "..." : ""}</td>
+                  <td class="${item.direction.toLowerCase()}">${item.direction}</td>
+                  <td>${item.polarityScore.toFixed(1)}</td>
+                  <td>${pct(item.confidence)}</td>
+                  <td>${pct(item.intensity)}</td>
+                  <td>${flags(item)}</td>
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
+        </section>
+      `;
+    }
+
+    function metric(label, value, help) {
+      const cls = label === "Overall" ? value.toLowerCase().split(" ")[0] : "";
+      return `<div class="metric"><span>${label}</span><strong class="${cls}">${value}</strong><small>${help}</small></div>`;
+    }
+
+    function bar(label, value, cls) {
+      return `<div class="bar-row"><div>${label}</div><div class="track"><div class="fill ${cls}" style="width:${Math.max(3, Math.min(100, value))}%"></div></div><div>${pct(value)}</div></div>`;
+    }
+
+    function flags(item) {
+      const parts = [];
+      if (item.riskHits) parts.push(`risk ${item.riskHits}`);
+      if (item.uncertaintyHits) parts.push(`uncertain ${item.uncertaintyHits}`);
+      if (item.socialHits) parts.push(`social ${item.socialHits}`);
+      if (!parts.length) parts.push("clean");
+      return parts.map(p => `<span class="chip">${p}</span>`).join(" ");
+    }
+
+    function rationale(summary, riskCount, uncertainCount, evidence) {
+      const drivers = evidence.slice(0, 5).map(e => e.term).join(", ") || "limited explicit sentiment vocabulary";
+      const confidenceNote = summary.avgConfidence >= 75 ? "confidence is strong" : summary.avgConfidence >= 50 ? "confidence is moderate" : "confidence is limited";
+      const riskNote = riskCount ? `Risk language appears ${riskCount} time${riskCount === 1 ? "" : "s"}` : "Risk language is minimal";
+      const uncertaintyNote = uncertainCount ? `and uncertainty language reduces conviction.` : "with little uncertainty language.";
+      return `The corpus reads as ${summary.netLabel.toLowerCase()} with ${confidenceNote}. Primary lexical drivers include ${drivers}. ${riskNote}, ${uncertaintyNote}`;
+    }
+  </script>
+</body>
+</html>
