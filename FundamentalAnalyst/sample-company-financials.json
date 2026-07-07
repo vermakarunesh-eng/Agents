@@ -1,0 +1,56 @@
+{
+  "company_name": "Example Cloud Systems",
+  "ticker": "ECS",
+  "reporting_period": "FY2025",
+  "filing_date": "2026-02-20",
+  "audited": true,
+  "restatement_or_going_concern_warning": false,
+  "data_notes": {
+    "statement_coverage": "three_primary_statements",
+    "disclosure_depth": "useful_but_incomplete",
+    "consistency": "minor_rounding_differences"
+  },
+  "income_statement": {
+    "revenue": 12800,
+    "revenue_prior_year": 10400,
+    "revenue_two_years_ago": 8700,
+    "gross_profit": 7552,
+    "operating_income": 2176,
+    "net_income": 1540
+  },
+  "balance_sheet": {
+    "cash_and_equivalents": 3100,
+    "current_assets": 6200,
+    "current_liabilities": 3600,
+    "total_assets": 18800,
+    "total_debt": 2400,
+    "short_term_debt": 350,
+    "total_liabilities": 7800,
+    "shareholders_equity": 11000,
+    "goodwill_and_intangibles": 2600,
+    "accounts_receivable": 1850,
+    "accounts_receivable_prior_year": 1320,
+    "inventory": 410,
+    "inventory_prior_year": 360
+  },
+  "cash_flow_statement": {
+    "operating_cash_flow": 2050,
+    "capital_expenditures": 520,
+    "free_cash_flow": 1530
+  },
+  "revenue_quality": {
+    "recurring_revenue_percent": 78,
+    "largest_customer_percent": 9,
+    "deferred_revenue": 2100,
+    "deferred_revenue_prior_year": 1650,
+    "segment_count": 4,
+    "gross_retention_percent": 91
+  },
+  "capital_allocation": {
+    "shares_outstanding": 520,
+    "shares_outstanding_prior_year": 505,
+    "buybacks": 120,
+    "dividends": 0,
+    "acquisition_spend": 350
+  }
+}

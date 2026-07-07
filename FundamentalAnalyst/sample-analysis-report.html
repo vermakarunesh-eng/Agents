@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fundamental Analyst Report</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17201c;
+      --muted: #5d6b65;
+      --line: #d9e0dc;
+      --surface: #ffffff;
+      --band: #f4f7f5;
+      --accent: #1f7a5a;
+      --warn: #9c5b10;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--band);
+      line-height: 1.5;
+    }
+    .shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 28px 18px 56px;
+    }
+    .topbar {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .brand {
+      font-size: 14px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0;
+      font-weight: 700;
+    }
+    .metric {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 14px;
+      min-width: 150px;
+    }
+    .metric strong {
+      display: block;
+      font-size: 22px;
+      color: var(--accent);
+    }
+    main {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 28px;
+      overflow-x: auto;
+    }
+    h1 {
+      margin: 0 0 18px;
+      font-size: 30px;
+      line-height: 1.2;
+    }
+    h2 {
+      margin-top: 30px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      font-size: 19px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 14px;
+    }
+    th, td {
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      padding: 10px 8px;
+      vertical-align: top;
+    }
+    th {
+      color: var(--muted);
+      font-weight: 700;
+      background: #f9fbfa;
+    }
+    p, li {
+      color: var(--ink);
+    }
+    strong {
+      color: var(--accent);
+    }
+    @media (max-width: 720px) {
+      .topbar {
+        grid-template-columns: 1fr;
+      }
+      main {
+        padding: 18px;
+      }
+      h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <div class="brand">Fundamental Analyst Agent</div>
+      <div class="metric">Quality Score<strong>91.1</strong></div>
+      <div class="metric">Confidence<strong>86.9</strong></div>
+    </div>
+    <main><h1>Fundamental Analyst Report: Example Cloud Systems (ECS)</h1>
+<h2>Executive View</h2>
+<p>Final View: <strong>Fundamentally Excellent</strong></p>
+<p>Composite Fundamental Quality Score: <strong>91.1/100</strong></p>
+<p>Overall Confidence Score: <strong>86.9/100</strong></p>
+<p>Reporting Period: <strong>FY2025</strong></p>
+<p>Filing Date: <strong>2026-02-20</strong></p>
+<h2>Financial Quality Scorecard</h2>
+<table><tbody>
+<tr><th>Category</th><th>Score</th><th>Confidence</th><th>Missing Data Penalty</th><th>Evidence</th></tr>
+<tr><td>Revenue Growth</td><td>100.0</td><td>82.0</td><td>No</td><td>Revenue changed 23.1% year over year; prior-year growth was 19.5%.</td></tr>
+<tr><td>Revenue Quality</td><td>100.0</td><td>88.0</td><td>No</td><td>78% recurring revenue; largest customer is 9% of revenue; deferred revenue changed 27.3%; 4 reported segments; 91% gross retention; 59.0% gross margin.</td></tr>
+<tr><td>Balance Sheet Strength</td><td>100.0</td><td>90.0</td><td>No</td><td>1.72 current ratio; net debt is -700; 0.22 debt-to-equity; 0.24 goodwill/intangibles-to-equity; 0.91 operating-income-to-debt proxy; 0.11 short-term-debt-to-cash.</td></tr>
+<tr><td>Profitability Support</td><td>79.6</td><td>78.0</td><td>No</td><td>59.0% gross margin; 17.0% operating margin; 12.0% net margin; 12.0% free cash flow margin.</td></tr>
+<tr><td>Cash Conversion</td><td>71.1</td><td>82.0</td><td>No</td><td>1.33 operating-cash-flow-to-net-income; 12.0% free cash flow margin; receivables growth 40.2% versus revenue growth 23.1%; inventory growth 13.9%.</td></tr>
+<tr><td>Dilution And Capital Allocation</td><td>69.6</td><td>76.0</td><td>No</td><td>share count changed 3.0%; buybacks were 120; 0.22 debt-to-equity; acquisition spend was 0.23x free cash flow.</td></tr>
+</tbody></table>
+<h2>Confidence Breakdown</h2>
+<table><tbody>
+<tr><th>Component</th><th>Score</th></tr>
+<tr><td>Data Freshness</td><td>86.0</td></tr>
+<tr><td>Statement Coverage</td><td>88.0</td></tr>
+<tr><td>Audit And Reliability</td><td>94.0</td></tr>
+<tr><td>Consistency</td><td>84.0</td></tr>
+<tr><td>Disclosure Depth</td><td>78.0</td></tr>
+</tbody></table>
+<p>Confidence caps applied: None</p>
+<h2>Risk Flags</h2>
+<table><tbody>
+<tr><th>Risk</th><th>Severity</th><th>Evidence</th></tr>
+<tr><td>Receivables outpacing revenue</td><td>Medium</td><td>Receivables grew 40.2% while revenue grew 23.1%.</td></tr>
+</tbody></table>
+<h2>Top Strengths</h2>
+<ul>
+<li>Revenue Growth: 100/100</li>
+<li>Revenue Quality: 100/100</li>
+<li>Balance Sheet Strength: 100/100</li>
+</ul>
+<h2>Top Concerns</h2>
+<ul>
+<li>Dilution And Capital Allocation: 69.6/100</li>
+<li>Cash Conversion: 71.1/100</li>
+<li>Profitability Support: 79.6/100</li>
+</ul>
+<h2>Data That Would Improve Confidence</h2>
+<ul>
+<li>More granular segment revenue and debt maturity disclosures</li>
+</ul>
+<h2>Analyst View</h2>
+<p>The company receives a Fundamentally Excellent rating based on the weighted quality score and the confidence-adjusted reliability of the input data. The model separates business quality from confidence, so strong fundamentals can still be marked down when disclosures are incomplete or stale.</p></main>
+  </div>
+</body>
+</html>

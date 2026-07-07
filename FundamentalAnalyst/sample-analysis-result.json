@@ -1,0 +1,81 @@
+{
+  "company_name": "Example Cloud Systems",
+  "ticker": "ECS",
+  "reporting_period": "FY2025",
+  "filing_date": "2026-02-20",
+  "final_view": "Fundamentally Excellent",
+  "composite_fundamental_quality_score": 91.1,
+  "overall_confidence_score": 86.9,
+  "confidence_components": {
+    "Data Freshness": 86,
+    "Statement Coverage": 88,
+    "Audit And Reliability": 94,
+    "Consistency": 84,
+    "Disclosure Depth": 78
+  },
+  "confidence_cap_reasons": [],
+  "category_scores": [
+    {
+      "category": "Revenue Growth",
+      "score": 100,
+      "confidence": 82,
+      "evidence": "Revenue changed 23.1% year over year; prior-year growth was 19.5%.",
+      "missing_data_penalty": false
+    },
+    {
+      "category": "Revenue Quality",
+      "score": 100,
+      "confidence": 88,
+      "evidence": "78% recurring revenue; largest customer is 9% of revenue; deferred revenue changed 27.3%; 4 reported segments; 91% gross retention; 59.0% gross margin.",
+      "missing_data_penalty": false
+    },
+    {
+      "category": "Balance Sheet Strength",
+      "score": 100,
+      "confidence": 90,
+      "evidence": "1.72 current ratio; net debt is -700; 0.22 debt-to-equity; 0.24 goodwill/intangibles-to-equity; 0.91 operating-income-to-debt proxy; 0.11 short-term-debt-to-cash.",
+      "missing_data_penalty": false
+    },
+    {
+      "category": "Profitability Support",
+      "score": 79.6,
+      "confidence": 78,
+      "evidence": "59.0% gross margin; 17.0% operating margin; 12.0% net margin; 12.0% free cash flow margin.",
+      "missing_data_penalty": false
+    },
+    {
+      "category": "Cash Conversion",
+      "score": 71.1,
+      "confidence": 82,
+      "evidence": "1.33 operating-cash-flow-to-net-income; 12.0% free cash flow margin; receivables growth 40.2% versus revenue growth 23.1%; inventory growth 13.9%.",
+      "missing_data_penalty": false
+    },
+    {
+      "category": "Dilution And Capital Allocation",
+      "score": 69.6,
+      "confidence": 76,
+      "evidence": "share count changed 3.0%; buybacks were 120; 0.22 debt-to-equity; acquisition spend was 0.23x free cash flow.",
+      "missing_data_penalty": false
+    }
+  ],
+  "risk_flags": [
+    {
+      "risk": "Receivables outpacing revenue",
+      "severity": "Medium",
+      "evidence": "Receivables grew 40.2% while revenue grew 23.1%."
+    }
+  ],
+  "top_strengths": [
+    "Revenue Growth: 100/100",
+    "Revenue Quality: 100/100",
+    "Balance Sheet Strength: 100/100"
+  ],
+  "top_concerns": [
+    "Dilution And Capital Allocation: 69.6/100",
+    "Cash Conversion: 71.1/100",
+    "Profitability Support: 79.6/100"
+  ],
+  "data_needed_to_improve_confidence": [
+    "More granular segment revenue and debt maturity disclosures"
+  ]
+}

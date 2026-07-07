@@ -1,0 +1,56 @@
+{
+  "company_name": "",
+  "ticker": "",
+  "reporting_period": "",
+  "filing_date": "YYYY-MM-DD",
+  "audited": true,
+  "restatement_or_going_concern_warning": false,
+  "data_notes": {
+    "statement_coverage": "three_primary_statements",
+    "disclosure_depth": "useful_but_incomplete",
+    "consistency": "figures_reconcile"
+  },
+  "income_statement": {
+    "revenue": 0,
+    "revenue_prior_year": 0,
+    "revenue_two_years_ago": 0,
+    "gross_profit": 0,
+    "operating_income": 0,
+    "net_income": 0
+  },
+  "balance_sheet": {
+    "cash_and_equivalents": 0,
+    "current_assets": 0,
+    "current_liabilities": 0,
+    "total_assets": 0,
+    "total_debt": 0,
+    "short_term_debt": 0,
+    "total_liabilities": 0,
+    "shareholders_equity": 0,
+    "goodwill_and_intangibles": 0,
+    "accounts_receivable": 0,
+    "accounts_receivable_prior_year": 0,
+    "inventory": 0,
+    "inventory_prior_year": 0
+  },
+  "cash_flow_statement": {
+    "operating_cash_flow": 0,
+    "capital_expenditures": 0,
+    "free_cash_flow": 0
+  },
+  "revenue_quality": {
+    "recurring_revenue_percent": 0,
+    "largest_customer_percent": 0,
+    "deferred_revenue": 0,
+    "deferred_revenue_prior_year": 0,
+    "segment_count": 0,
+    "gross_retention_percent": 0
+  },
+  "capital_allocation": {
+    "shares_outstanding": 0,
+    "shares_outstanding_prior_year": 0,
+    "buybacks": 0,
+    "dividends": 0,
+    "acquisition_spend": 0
+  }
+}

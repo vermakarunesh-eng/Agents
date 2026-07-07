@@ -1,0 +1,191 @@
+{
+  "agent_name": "Fundamental Analyst",
+  "version": "1.0.0",
+  "mission": "Analyze public companies using financial statements, emphasizing balance sheet strength, revenue quality, revenue growth, and confidence scoring.",
+  "required_inputs": [
+    "company_name",
+    "ticker",
+    "reporting_period",
+    "income_statement.revenue",
+    "balance_sheet"
+  ],
+  "recommended_inputs": [
+    "cash_flow_statement",
+    "segment_revenue",
+    "geographic_revenue",
+    "debt_maturity_schedule",
+    "share_count",
+    "customer_concentration",
+    "accounting_changes"
+  ],
+  "quality_score_weights": {
+    "revenue_growth": 0.2,
+    "revenue_quality": 0.2,
+    "balance_sheet_strength": 0.25,
+    "profitability_support": 0.15,
+    "cash_conversion": 0.15,
+    "dilution_and_capital_allocation": 0.05
+  },
+  "confidence_score_weights": {
+    "data_freshness": 0.25,
+    "statement_coverage": 0.25,
+    "audit_and_reliability": 0.2,
+    "consistency": 0.2,
+    "disclosure_depth": 0.1
+  },
+  "confidence_caps": [
+    {
+      "condition": "balance_sheet_missing",
+      "max_confidence": 75
+    },
+    {
+      "condition": "revenue_missing",
+      "max_confidence": 65
+    },
+    {
+      "condition": "only_summary_metrics_available",
+      "max_confidence": 60
+    },
+    {
+      "condition": "material_statement_inconsistency",
+      "max_confidence": 55
+    },
+    {
+      "condition": "restatement_or_going_concern_warning",
+      "max_confidence": 50
+    }
+  ],
+  "score_categories": [
+    {
+      "id": "revenue_growth",
+      "label": "Revenue Growth",
+      "signals": [
+        "year_over_year_growth",
+        "multi_year_cagr",
+        "sequential_growth",
+        "growth_consistency",
+        "organic_vs_acquired_growth",
+        "currency_effects",
+        "cyclicality"
+      ]
+    },
+    {
+      "id": "revenue_quality",
+      "label": "Revenue Quality",
+      "signals": [
+        "recurring_revenue",
+        "customer_concentration",
+        "deferred_revenue",
+        "backlog_or_remaining_performance_obligations",
+        "pricing_power",
+        "churn_or_retention",
+        "segment_diversification",
+        "gross_margin_stability"
+      ]
+    },
+    {
+      "id": "balance_sheet_strength",
+      "label": "Balance Sheet Strength",
+      "signals": [
+        "cash_and_equivalents",
+        "current_ratio",
+        "total_debt",
+        "net_debt",
+        "debt_maturity_schedule",
+        "interest_coverage",
+        "liquidity_runway",
+        "goodwill_and_intangibles",
+        "working_capital",
+        "off_balance_sheet_obligations"
+      ]
+    },
+    {
+      "id": "profitability_support",
+      "label": "Profitability Support",
+      "signals": [
+        "gross_margin_trend",
+        "operating_margin_trend",
+        "net_margin_trend",
+        "free_cash_flow_margin",
+        "stock_based_compensation_intensity",
+        "one_time_adjustments"
+      ]
+    },
+    {
+      "id": "cash_conversion",
+      "label": "Cash Conversion",
+      "signals": [
+        "operating_cash_flow_vs_net_income",
+        "free_cash_flow_trend",
+        "capital_expenditure_burden",
+        "receivables_growth_vs_revenue_growth",
+        "inventory_growth_vs_revenue_growth",
+        "deferred_revenue_support"
+      ]
+    },
+    {
+      "id": "dilution_and_capital_allocation",
+      "label": "Dilution And Capital Allocation",
+      "signals": [
+        "share_count_trend",
+        "equity_issuance",
+        "buybacks",
+        "debt_issuance",
+        "dividend_sustainability",
+        "acquisition_discipline",
+        "return_on_invested_capital"
+      ]
+    }
+  ],
+  "risk_flags": [
+    "revenue_growth_below_receivables_growth",
+    "inventory_growth_far_above_revenue_growth",
+    "rising_debt_with_falling_revenue",
+    "negative_working_capital_without_clear_business_model_reason",
+    "declining_gross_margin_during_revenue_growth",
+    "large_goodwill_or_intangibles_relative_to_equity",
+    "short_term_debt_maturity_wall",
+    "persistent_negative_free_cash_flow",
+    "high_customer_concentration",
+    "repeated_adjusted_earnings_exclusions",
+    "share_count_dilution_above_business_growth",
+    "auditor_change_restatement_or_going_concern_language"
+  ],
+  "final_views": [
+    "Fundamentally Excellent",
+    "Fundamentally Strong",
+    "Fundamentally Mixed",
+    "Fundamentally Weak",
+    "Financially Distressed",
+    "Insufficient Data"
+  ],
+  "output_contract": {
+    "executive_view": {
+      "final_view": "string",
+      "composite_fundamental_quality_score": "number",
+      "overall_confidence_score": "number",
+      "summary": "string"
+    },
+    "category_scores": [
+      {
+        "category": "string",
+        "score": "number",
+        "confidence": "number",
+        "evidence": "string",
+        "missing_data_penalty": "boolean"
+      }
+    ],
+    "risk_flags": [
+      {
+        "risk": "string",
+        "severity": "Low|Medium|High|Critical",
+        "evidence": "string"
+      }
+    ],
+    "final_analyst_view": {
+      "top_strengths": ["string"],
+      "top_concerns": ["string"],
+      "data_needed_to_improve_confidence": ["string"]
+    }
+  }
+}
