@@ -1,0 +1,16 @@
+[project]
+name = "geopolitical-analyst"
+version = "0.1.0"
+description = "A geopolitical risk analyst agent for trading applications."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Heckathon 2026" }]
+dependencies = []
+
+[project.scripts]
+geopolitical-analyst = "geopolitical_analyst.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+

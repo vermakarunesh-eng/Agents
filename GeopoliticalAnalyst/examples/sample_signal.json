@@ -1,0 +1,35 @@
+{
+  "observations": [
+    {
+      "region": "Red Sea",
+      "countries": ["YEM", "USA", "GBR"],
+      "signal": "conflict",
+      "source_reliability": 0.82,
+      "intensity": 0.76,
+      "market_relevance": 0.91,
+      "recency_hours": 3,
+      "evidence": "Missile interception report near commercial shipping lane.",
+      "asset_classes": ["crude_oil", "shipping", "insurance"],
+      "corroboration_count": 4,
+      "novelty": 0.62,
+      "escalation_velocity": 0.74,
+      "policy_specificity": 0.44
+    },
+    {
+      "region": "East Asia",
+      "countries": ["CHN", "USA"],
+      "signal": "trade",
+      "source_reliability": 0.77,
+      "intensity": 0.58,
+      "market_relevance": 0.86,
+      "recency_hours": 18,
+      "evidence": "Draft export-control language references advanced semiconductor equipment.",
+      "asset_classes": ["semiconductors", "equities", "fx"],
+      "corroboration_count": 3,
+      "novelty": 0.54,
+      "escalation_velocity": 0.48,
+      "policy_specificity": 0.81
+    }
+  ]
+}
+
