@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agents Trading Desk</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="topbar">
+        <div>
+          <h1>Agents Trading Desk</h1>
+          <p>Live feed, agent recommendation, risk gates, and broker execution controls.</p>
+        </div>
+        <form id="symbolForm" class="symbol-form">
+          <label>
+            Symbol
+            <input id="symbolInput" name="symbol" value="AAPL" autocomplete="off" />
+          </label>
+          <button type="submit">Refresh</button>
+        </form>
+      </section>
+
+      <section class="quote-strip" aria-live="polite">
+        <div>
+          <span class="label">Last</span>
+          <strong id="lastPrice">--</strong>
+        </div>
+        <div>
+          <span class="label">Change</span>
+          <strong id="changeValue">--</strong>
+        </div>
+        <div>
+          <span class="label">Market</span>
+          <strong id="marketState">--</strong>
+        </div>
+        <div>
+          <span class="label">Updated</span>
+          <strong id="updatedAt">--</strong>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <div class="chart-panel">
+          <div class="panel-head">
+            <div>
+              <h2 id="chartTitle">AAPL</h2>
+              <span id="feedSource">Waiting for feed</span>
+            </div>
+            <div id="status" class="status">Idle</div>
+          </div>
+          <canvas id="priceChart" width="900" height="420"></canvas>
+        </div>
+
+        <aside class="side-panel">
+          <section class="tool-block">
+            <h2>Agent</h2>
+            <div class="decision">
+              <span id="actionBadge" class="badge hold">HOLD</span>
+              <div>
+                <strong id="confidence">--</strong>
+                <span>confidence</span>
+              </div>
+            </div>
+            <dl class="metrics">
+              <div><dt>Entry</dt><dd id="entry">--</dd></div>
+              <div><dt>Stop</dt><dd id="stopLoss">--</dd></div>
+              <div><dt>Target</dt><dd id="takeProfit">--</dd></div>
+              <div><dt>Shares</dt><dd id="shares">--</dd></div>
+            </dl>
+            <ul id="rationale" class="rationale"></ul>
+          </section>
+
+          <section class="tool-block">
+            <h2>Risk</h2>
+            <div class="grid-fields">
+              <label>Capital<input id="capital" type="number" value="100000" min="1000" step="1000" /></label>
+              <label>Risk %<input id="riskPct" type="number" value="0.5" min="0.1" max="10" step="0.1" /></label>
+              <label>Max Pos %<input id="maxPositionPct" type="number" value="8" min="1" max="100" step="1" /></label>
+              <label>Horizon<input id="horizon" type="number" value="5" min="1" max="30" step="1" /></label>
+            </div>
+          </section>
+
+          <section class="tool-block">
+            <h2>Automated Execution</h2>
+            <form id="executionForm" class="order-form">
+              <div id="brokerStatus" class="broker-status">Checking broker</div>
+              <div class="grid-fields">
+                <label>Min Conf %<input id="minConfidence" type="number" value="62" min="50" max="95" step="1" /></label>
+                <label>Cooldown Sec<input id="cooldownSeconds" type="number" value="900" min="60" step="60" /></label>
+                <label class="wide">Auto Sec<input id="autoSeconds" type="number" value="300" min="60" step="60" /></label>
+              </div>
+              <label class="arm-control"><input id="executionArmed" type="checkbox" /> Arm broker execution</label>
+              <label class="arm-control"><input id="autoExecution" type="checkbox" /> Run automatically while armed</label>
+              <button type="submit" class="trade-button danger">Execute Agent Trade</button>
+            </form>
+          </section>
+        </aside>
+      </section>
+
+      <section class="lower-grid">
+        <div class="table-panel">
+          <h2>Feed Summary</h2>
+          <dl id="feedSummary" class="metrics wide-metrics"></dl>
+        </div>
+        <div class="table-panel">
+          <h2>Execution Audit</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Time</th><th>Status</th><th>Symbol</th><th>Action</th><th>Reason</th><th>Broker</th></tr>
+              </thead>
+              <tbody id="executionsBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
