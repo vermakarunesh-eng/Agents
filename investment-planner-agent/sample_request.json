@@ -1,0 +1,108 @@
+{
+  "investor_profile": {
+    "name": "Research Portfolio",
+    "base_currency": "INR",
+    "capital": 1320000,
+    "risk_tolerance": "moderate",
+    "time_horizon_months": 36,
+    "target_return_pct": 18,
+    "max_drawdown_pct": 14,
+    "constraints": [
+      "prefer liquid NSE/BSE names",
+      "avoid highly leveraged balance sheets",
+      "keep single-stock allocation below 25%"
+    ]
+  },
+  "portfolio": [
+    {
+      "symbol": "NEXA",
+      "name": "Nexa Renewables",
+      "sector": "Clean Energy",
+      "quantity": 750,
+      "avg_price": 690,
+      "last_price": 940
+    },
+    {
+      "symbol": "TPWR",
+      "name": "Tata Power",
+      "sector": "Utilities",
+      "quantity": 800,
+      "avg_price": 265,
+      "last_price": 410
+    },
+    {
+      "symbol": "ADGN",
+      "name": "Adani Green",
+      "sector": "Clean Energy",
+      "quantity": 300,
+      "avg_price": 1180,
+      "last_price": 1605
+    }
+  ],
+  "candidates": [
+    {
+      "symbol": "NEXA",
+      "name": "Nexa Renewables",
+      "sector": "Clean Energy",
+      "price": 940,
+      "pe": 64,
+      "revenue_growth_pct": 16,
+      "profit_growth_pct": 8,
+      "debt_to_equity": 1.9,
+      "rsi": 78,
+      "macd_signal": "bearish",
+      "volume_trend": "fading",
+      "news_sentiment": -0.25,
+      "social_sentiment": -0.1,
+      "policy_tailwind": 0.35,
+      "geopolitical_risk": 0.25,
+      "volatility_pct": 36,
+      "max_drawdown_pct": 22
+    },
+    {
+      "symbol": "TPWR",
+      "name": "Tata Power",
+      "sector": "Utilities",
+      "price": 410,
+      "pe": 31,
+      "revenue_growth_pct": 19,
+      "profit_growth_pct": 22,
+      "debt_to_equity": 1.1,
+      "rsi": 58,
+      "macd_signal": "bullish",
+      "volume_trend": "rising",
+      "news_sentiment": 0.35,
+      "social_sentiment": 0.2,
+      "policy_tailwind": 0.45,
+      "geopolitical_risk": 0.18,
+      "volatility_pct": 24,
+      "max_drawdown_pct": 13
+    },
+    {
+      "symbol": "ADGN",
+      "name": "Adani Green",
+      "sector": "Clean Energy",
+      "price": 1605,
+      "pe": 89,
+      "revenue_growth_pct": 24,
+      "profit_growth_pct": 18,
+      "debt_to_equity": 2.4,
+      "rsi": 69,
+      "macd_signal": "neutral",
+      "volume_trend": "stable",
+      "news_sentiment": 0.05,
+      "social_sentiment": 0.15,
+      "policy_tailwind": 0.48,
+      "geopolitical_risk": 0.32,
+      "volatility_pct": 41,
+      "max_drawdown_pct": 26
+    }
+  ],
+  "macro": {
+    "gdp_growth_pct": 7.1,
+    "inflation_pct": 4.8,
+    "interest_rate_pct": 6.5,
+    "liquidity": "neutral"
+  }
+}
+
