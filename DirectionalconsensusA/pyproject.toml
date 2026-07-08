@@ -1,0 +1,13 @@
+[project]
+name = "directional-consensus-a"
+version = "0.1.0"
+description = "Directional Consensus Agent A for an autonomous multi-agent investment committee workflow."
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+directional-consensus-a = "directional_consensus_a.cli:main"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

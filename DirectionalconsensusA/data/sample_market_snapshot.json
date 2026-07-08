@@ -1,0 +1,97 @@
+{
+  "portfolio": [
+    {
+      "symbol": "FROMA",
+      "quantity": 75,
+      "average_price": 1180.0
+    }
+  ],
+  "market_context": {
+    "index_trend": "bullish",
+    "inflation_trend": "falling",
+    "interest_rate_outlook": "neutral",
+    "risk_regime": "balanced"
+  },
+  "candidates": [
+    {
+      "symbol": "NEXA",
+      "name": "Nexa Renewables",
+      "sector": "Clean Energy",
+      "current_price": 642.5,
+      "revenue_growth_pct": 24.0,
+      "profit_margin_pct": 18.5,
+      "debt_to_equity": 0.62,
+      "rsi": 58.0,
+      "ema_signal": "bullish",
+      "volume_ratio": 1.45,
+      "news_sentiment": 0.52,
+      "social_sentiment": 0.34,
+      "macro_sensitivity": 0.82,
+      "volatility_pct": 21.0,
+      "max_drawdown_pct": 12.5,
+      "beta": 1.08
+    },
+    {
+      "symbol": "TATPWR",
+      "name": "Tata Power",
+      "sector": "Utilities",
+      "current_price": 421.2,
+      "revenue_growth_pct": 12.5,
+      "profit_margin_pct": 11.0,
+      "debt_to_equity": 1.18,
+      "rsi": 47.0,
+      "ema_signal": "neutral",
+      "volume_ratio": 0.96,
+      "news_sentiment": 0.18,
+      "social_sentiment": 0.12,
+      "macro_sensitivity": 0.65,
+      "volatility_pct": 18.5,
+      "max_drawdown_pct": 10.0,
+      "beta": 0.92
+    },
+    {
+      "symbol": "ADGRN",
+      "name": "Adani Green",
+      "sector": "Clean Energy",
+      "current_price": 1878.0,
+      "revenue_growth_pct": 29.0,
+      "profit_margin_pct": 9.0,
+      "debt_to_equity": 2.05,
+      "rsi": 74.0,
+      "ema_signal": "bullish",
+      "volume_ratio": 1.82,
+      "news_sentiment": 0.08,
+      "social_sentiment": 0.26,
+      "macro_sensitivity": 0.92,
+      "volatility_pct": 38.0,
+      "max_drawdown_pct": 24.0,
+      "beta": 1.52
+    }
+  ],
+  "peer_opinions": [
+    {
+      "agent_id": "Agent B",
+      "symbol": "NEXA",
+      "action": "BUY",
+      "confidence": 76.0,
+      "historical_reliability": 0.84,
+      "rationale": "Technical breakout with clean-energy news support."
+    },
+    {
+      "agent_id": "Agent O",
+      "symbol": "NEXA",
+      "action": "HOLD",
+      "confidence": 61.0,
+      "historical_reliability": 0.72,
+      "rationale": "Opportunity exists, but valuation should be monitored."
+    },
+    {
+      "agent_id": "Agent Risk",
+      "symbol": "ADGRN",
+      "action": "SELL",
+      "confidence": 70.0,
+      "historical_reliability": 0.81,
+      "rationale": "Drawdown and leverage risk are elevated."
+    }
+  ]
+}
