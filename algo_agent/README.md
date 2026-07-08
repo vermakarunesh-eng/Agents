@@ -20,6 +20,7 @@ This is not financial advice. It is a local research tool for screening and expe
 ```powershell
 python -m algo_agent.cli recommend --symbol AAPL --demo
 python -m algo_agent.cli backtest --symbol AAPL --demo
+python -m algo_agent.cli reinforce --symbol AAPL --demo
 ```
 
 Use your own CSV:
@@ -98,6 +99,29 @@ The model predicts whether the close price will be higher after a configurable f
 - `HOLD` is the default when evidence is mixed.
 
 The backtest is simple by design. It is meant to catch obvious problems and compare strategy versions, not prove profitability.
+
+## Reinforcement Learning
+
+The `reinforce` command adds a small dependency-free Q-learning loop on top of the existing supervised signal. In simple terms, reinforcement learning means an agent tries actions, receives rewards, and gradually updates a policy toward actions that produced better outcomes.
+
+In this package:
+
+- **State** = model probability bucket, trend bucket, and volatility bucket.
+- **Action** = `BUY`, `SELL`, or `HOLD`.
+- **Reward** = next-bar trading return minus transaction cost and drawdown penalty.
+- **Policy** = a Q-table showing the best learned action for each market state.
+
+Run it with demo prices:
+
+```powershell
+python -m algo_agent.cli reinforce --demo --episodes 30
+```
+
+Run it with your own OHLCV CSV:
+
+```powershell
+python -m algo_agent.cli reinforce --csv path\to\prices.csv --symbol RELIANCE --episodes 40 --train-window 180
+```
 
 ## Real-Money Guardrails
 
