@@ -1,0 +1,48 @@
+{
+  "name": "macro_critic",
+  "committee_role": "Dynamic Debate & Critic Loop",
+  "purpose": "Challenge proposed trades and allocations using macroeconomic regime evidence before the consensus layer finalizes a decision.",
+  "inputs": {
+    "proposal": [
+      "action",
+      "symbol",
+      "asset_class",
+      "sector",
+      "country",
+      "horizon_days",
+      "rationale"
+    ],
+    "macro": [
+      "inflation_yoy",
+      "policy_rate",
+      "policy_bias",
+      "gdp_growth_yoy",
+      "pmi",
+      "currency_change_30d_pct",
+      "liquidity_condition",
+      "yield_curve_slope_bps",
+      "fiscal_impulse"
+    ],
+    "market": [
+      "index_trend_30d_pct",
+      "sector_trend_30d_pct",
+      "volatility_percentile",
+      "credit_spread_change_30d_bps",
+      "commodity_pressure"
+    ]
+  },
+  "outputs": [
+    "stance",
+    "directional_confidence",
+    "summary",
+    "evidence",
+    "critic_comments",
+    "stress_scenarios",
+    "consensus_payload"
+  ],
+  "trust_weighting_notes": [
+    "Use directional_confidence as this agent's vote confidence.",
+    "Use evidence labels for historical reliability tracking.",
+    "Discount confidence when the result contains insufficient_macro_evidence."
+  ]
+}

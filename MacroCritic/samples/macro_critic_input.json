@@ -1,0 +1,30 @@
+{
+  "proposal": {
+    "action": "BUY",
+    "symbol": "NEXA",
+    "asset_class": "equity",
+    "sector": "clean_energy",
+    "country": "IN",
+    "horizon_days": 30,
+    "rationale": "Breakout with strong sentiment and positive news flow."
+  },
+  "macro": {
+    "inflation_yoy": 5.1,
+    "policy_rate": 6.5,
+    "policy_bias": "hawkish",
+    "gdp_growth_yoy": 6.8,
+    "pmi": 58.3,
+    "currency_change_30d_pct": -1.2,
+    "liquidity_condition": "neutral",
+    "yield_curve_slope_bps": 42,
+    "fiscal_impulse": "supportive"
+  },
+  "market": {
+    "index_trend_30d_pct": 4.2,
+    "sector_trend_30d_pct": 8.4,
+    "volatility_percentile": 61,
+    "credit_spread_change_30d_bps": 8,
+    "commodity_pressure": "rising"
+  }
+}
+
