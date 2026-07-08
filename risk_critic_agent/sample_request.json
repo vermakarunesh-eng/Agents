@@ -1,0 +1,70 @@
+{
+  "proposed_action": "buy",
+  "instrument": {
+    "ticker": "EXAMPLE",
+    "asset_class": "equity",
+    "market": "US"
+  },
+  "time_horizon": "3 months",
+  "entry": {
+    "price": 100.0,
+    "currency": "USD",
+    "as_of": "2026-07-08"
+  },
+  "target": {
+    "price": 118.0,
+    "rationale": "Analyst base-case rerating"
+  },
+  "stop_loss": {
+    "price": 92.0,
+    "type": "hard_stop"
+  },
+  "expected_return": "18%",
+  "expected_drawdown": "8%",
+  "proposed_position_size": {
+    "portfolio_weight": "4%",
+    "max_loss_budget": "0.32% of portfolio"
+  },
+  "market_data": {
+    "last_price": 100.0,
+    "average_daily_volume": 2500000,
+    "bid_ask_spread_bps": 5,
+    "realized_volatility_30d": "32%",
+    "beta": 1.25,
+    "data_as_of": "2026-07-08"
+  },
+  "portfolio_context": {
+    "current_weight": "0%",
+    "proposed_weight": "4%",
+    "sector_weight_before": "12%",
+    "sector_weight_after": "16%",
+    "single_name_limit": "5%",
+    "sector_limit": "20%"
+  },
+  "agent_recommendations": [
+    {
+      "agent": "fundamental",
+      "recommendation": "buy",
+      "confidence": 72,
+      "evidence_summary": "Margin recovery and balance-sheet improvement"
+    },
+    {
+      "agent": "technical",
+      "recommendation": "buy",
+      "confidence": 65,
+      "evidence_summary": "Breakout with volume confirmation"
+    }
+  ],
+  "supporting_evidence": [
+    {
+      "source": "company filing",
+      "date": "2026-06-30",
+      "claim": "Debt reduction improved interest coverage"
+    },
+    {
+      "source": "market data provider",
+      "date": "2026-07-08",
+      "claim": "Liquidity supports requested position size"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "agent": "risk_critic",
+  "decision": "approve_with_controls",
+  "risk_confidence_score": 72,
+  "evidence_quality_score": 68,
+  "overall_risk_rating": "medium",
+  "summary": "The proposal is coherent and appears inside stated single-name and sector limits, but the risk case depends on continued margin recovery and a technical breakout that could fail if volume fades.",
+  "top_risks": [
+    {
+      "risk": "Breakout failure",
+      "severity": "medium",
+      "probability": "medium",
+      "mechanism": "A reversal below the breakout level could turn momentum buyers into sellers.",
+      "evidence": "Technical signal is recent and depends on volume confirmation.",
+      "mitigation": "Use partial entry and require volume to remain above the 20-day average."
+    },
+    {
+      "risk": "Sector concentration increase",
+      "severity": "medium",
+      "probability": "medium",
+      "mechanism": "The trade raises sector exposure from 12% to 16%, reducing room for future ideas in the same sector.",
+      "evidence": "Portfolio context states a 20% sector limit.",
+      "mitigation": "Cap position at 4% and review if sector exposure exceeds 18%."
+    }
+  ],
+  "scenario_analysis": [
+    {
+      "scenario": "base_case",
+      "trigger": "Margin recovery continues and price holds above entry with volume support.",
+      "expected_impact": "Trade progresses toward target.",
+      "approximate_loss_or_drawdown": "No material drawdown beyond normal volatility expected.",
+      "mitigation": "Maintain stop and reassess after the next earnings update."
+    },
+    {
+      "scenario": "bear_case",
+      "trigger": "Price closes below 92 or margin recovery evidence weakens.",
+      "expected_impact": "Thesis is impaired and loss budget may be used.",
+      "approximate_loss_or_drawdown": "Approximately 8% on the position if stopped at 92.",
+      "mitigation": "Exit on stop or reduce by half before the stop if volume deteriorates."
+    },
+    {
+      "scenario": "stress_case",
+      "trigger": "Market-wide risk-off move causes a gap below the stop.",
+      "expected_impact": "Loss may exceed planned 8% position drawdown.",
+      "approximate_loss_or_drawdown": "Cannot estimate without gap history and options data.",
+      "mitigation": "Avoid entering immediately before earnings or major macro events; consider a protective put if event risk is elevated."
+    }
+  ],
+  "portfolio_impact": {
+    "single_name_concentration": "within 5% limit",
+    "sector_concentration": "rises to 16%, below 20% limit",
+    "liquidity_impact": "appears manageable based on supplied volume and spread",
+    "drawdown_contribution": "approximately 0.32% of portfolio if stop executes at 92"
+  },
+  "consensus_risk": {
+    "agent_alignment": "fundamental and technical agents both support the trade",
+    "confidence_calibration": "not provided",
+    "evidence_independence": "partially independent",
+    "consensus_fragility": true,
+    "reason": "Both agents rely on near-term continuation; no dissenting macro or valuation review was supplied."
+  },
+  "required_controls": [
+    "Limit initial position to 2% and scale to 4% only after confirmation.",
+    "Use 92 as a hard invalidation level unless updated evidence justifies a revised stop.",
+    "Do not enter before unresolved earnings or macro events without explicit event-risk review.",
+    "Require updated liquidity and spread check on trade date."
+  ],
+  "missing_information": [
+    "Historical agent calibration",
+    "Upcoming event calendar",
+    "Valuation comparison",
+    "Gap history"
+  ],
+  "monitoring_triggers": [
+    "Daily close below 92",
+    "Sector exposure above 18%",
+    "Bid-ask spread widens above 20 bps",
+    "30-day realized volatility rises above 45%",
+    "Any new filing or news that contradicts the margin recovery thesis"
+  ],
+  "human_review_required": false,
+  "final_risk_note": "Proceed only with controls. The thesis is reviewable, but confidence should be capped until valuation, event risk, and historical agent calibration are supplied."
+}

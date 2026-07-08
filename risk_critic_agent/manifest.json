@@ -1,0 +1,20 @@
+{
+  "name": "risk_critic_agent",
+  "version": "1.0.0",
+  "description": "Downside-focused risk critique agent for an autonomous investment committee.",
+  "entrypoint": "risk_critic_agent.py",
+  "prompt": "risk_critic_prompt.md",
+  "output_schema": "risk_critic_schema.json",
+  "sample_request": "sample_request.json",
+  "sample_response": "sample_response.json",
+  "decisions": [
+    "approve_with_controls",
+    "reduce_size",
+    "delay_for_confirmation",
+    "hedge_required",
+    "reject",
+    "insufficient_data"
+  ],
+  "requires_current_market_data": true,
+  "default_temperature": 0.1
+}
