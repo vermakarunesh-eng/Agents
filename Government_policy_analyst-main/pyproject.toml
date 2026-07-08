@@ -1,0 +1,10 @@
+[project]
+name = "government-policy-agent"
+version = "0.1.0"
+description = "Evidence-driven multi-agent government policy analysis system."
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
