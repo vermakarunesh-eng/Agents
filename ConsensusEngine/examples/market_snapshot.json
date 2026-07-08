@@ -1,0 +1,140 @@
+{
+  "as_of": "2026-07-08T12:57:45+05:30",
+  "portfolio": {
+    "cash": 250000,
+    "positions": {
+      "AETHER": {
+        "name": "Aether Corp",
+        "quantity": 120,
+        "market_value": 600000,
+        "sector": "legacy_energy"
+      }
+    }
+  },
+  "candidates": {
+    "AETHER": {
+      "name": "Aether Corp",
+      "sector": "legacy_energy",
+      "price_momentum_20d": -0.11,
+      "price_momentum_60d": -0.18,
+      "rsi": 72,
+      "macd": -0.04,
+      "volume_surge": 0.22,
+      "revenue_growth": -0.03,
+      "earnings_growth": -0.08,
+      "debt_to_equity": 1.9,
+      "news_sentiment": -0.42,
+      "social_sentiment": -0.33,
+      "policy_tailwind": -0.2,
+      "geopolitical_risk": 0.32,
+      "volatility": 0.34,
+      "max_drawdown": 0.24,
+      "expected_return": -0.02
+    },
+    "NEXA": {
+      "name": "Nexa Renewables",
+      "sector": "clean_energy",
+      "price_momentum_20d": 0.16,
+      "price_momentum_60d": 0.24,
+      "rsi": 58,
+      "macd": 0.09,
+      "volume_surge": 0.41,
+      "revenue_growth": 0.19,
+      "earnings_growth": 0.16,
+      "debt_to_equity": 0.42,
+      "news_sentiment": 0.56,
+      "social_sentiment": 0.37,
+      "policy_tailwind": 0.34,
+      "geopolitical_risk": 0.08,
+      "volatility": 0.22,
+      "max_drawdown": 0.125,
+      "expected_return": 0.285
+    },
+    "TPOWER": {
+      "name": "Tata Power",
+      "sector": "power",
+      "price_momentum_20d": 0.05,
+      "price_momentum_60d": 0.09,
+      "rsi": 54,
+      "macd": 0.03,
+      "volume_surge": 0.13,
+      "revenue_growth": 0.08,
+      "earnings_growth": 0.05,
+      "debt_to_equity": 0.88,
+      "news_sentiment": 0.18,
+      "social_sentiment": 0.1,
+      "policy_tailwind": 0.14,
+      "geopolitical_risk": 0.11,
+      "volatility": 0.2,
+      "max_drawdown": 0.14,
+      "expected_return": 0.16
+    },
+    "ADGREEN": {
+      "name": "Adani Green",
+      "sector": "clean_energy",
+      "price_momentum_20d": 0.09,
+      "price_momentum_60d": 0.12,
+      "rsi": 61,
+      "macd": 0.02,
+      "volume_surge": 0.1,
+      "revenue_growth": 0.13,
+      "earnings_growth": 0.09,
+      "debt_to_equity": 1.25,
+      "news_sentiment": 0.2,
+      "social_sentiment": 0.21,
+      "policy_tailwind": 0.28,
+      "geopolitical_risk": 0.13,
+      "volatility": 0.29,
+      "max_drawdown": 0.2,
+      "expected_return": 0.19
+    }
+  },
+  "macro": {
+    "gdp_trend": 0.07,
+    "inflation": 0.048,
+    "interest_rate_bias": -0.01,
+    "clean_energy_policy_strength": 0.31,
+    "risk_regime": 0.38
+  },
+  "reliability": {
+    "macro": 0.81,
+    "fundamental": 0.86,
+    "technical": 0.76,
+    "sentiment": 0.68,
+    "geopolitical": 0.7,
+    "government_policy": 0.78,
+    "risk": 0.83
+  },
+  "directional_trust": {
+    "macro": {
+      "government_policy": 0.74,
+      "fundamental": 0.68,
+      "risk": 0.61
+    },
+    "fundamental": {
+      "technical": 0.63,
+      "sentiment": 0.58,
+      "risk": 0.66
+    },
+    "technical": {
+      "sentiment": 0.54,
+      "risk": 0.49
+    },
+    "sentiment": {
+      "technical": 0.55,
+      "government_policy": 0.52
+    },
+    "geopolitical": {
+      "risk": 0.72,
+      "macro": 0.6
+    },
+    "government_policy": {
+      "macro": 0.76,
+      "fundamental": 0.64
+    },
+    "risk": {
+      "geopolitical": 0.7,
+      "fundamental": 0.62
+    }
+  }
+}
